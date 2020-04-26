@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Dice Roll</title>
+</head>
+<body>
+   <!-- container -->
+    <div class="container">
+        <h1>Dice Roll</h1>
+
+        <div class="dices">
+            <div class="dice1 dice">Player One<img src="images/dice1.png" alt="" id="img1"></div>
+            <div class="dice2 dice">Player Two<img src="images/dice6.png" alt="" id="img2"></div>
+        </div>
+
+        <button type="button" id="btn">Click To Roll</button>
+    </div>
+    <!-- container -->
+    
+    <!-- script starts here -->
+    <script>
+           
+        //    function to start the game
+           function playGame()
+           {
+               
+            //    method to generate number and save it in variable
+            var one = Math.floor(Math.random()*6)+1;
+           var image_one = `images/dice${one}.png`;
+           
+           //    method to generate number and save it in variable
+           var two = Math.floor(Math.random()*6)+1;
+           var image_two = `images/dice${two}.png`;
+
+
+           var image1 = document.getElementById("img1");
+           //   method to dipslay random image  
+           image1.setAttribute("src", image_one);
+
+           var image2 = document.getElementById("img2");
+
+           //   method to dipslay random image
+           image2.setAttribute("src", image_two);
+            
+            // condition to check if player one's dice number are greater then player two's dice number 
+           if(one > two)
+           {
+               var player1 = document.querySelector("h1");
+               player1.innerHTML="Player One Wins"
+               player1.style.color="cadetblue"
+           } 
+           // condition to check if player one's dice number are less then player two's dice number
+           else if(one < two)
+           {
+            var player2 = document.querySelector("h1");
+               player2.innerHTML="Player Two Wins"
+               player2.style.color="#de7119"
+           }
+           else
+           {
+            document.querySelector("h1").innerHTML="Draw"
+            document.querySelector("h1").style.color="black"
+           }
+           }
+              
+            // method to load playGame() function on button clicked   
+           document.getElementById("btn").addEventListener("click", playGame)
+           
+
+    </script>
+</body>
+</html>
